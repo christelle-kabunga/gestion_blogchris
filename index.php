@@ -1,6 +1,6 @@
 <?php
 
-include('bd.php');
+include('connexion/bd.php');
 
 ?>
 <!DOCTYPE html>
@@ -15,25 +15,25 @@ include('bd.php');
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets1/img/favicon.png" rel="icon">
+  <link href="assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets1/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets1/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets1/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets1/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets1/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets1/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets1/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <!-- <script src="assets/css/style.php" cache-control="no-cache"></script> -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- <script src="assets1/css/style.php" cache-control="no-cache"></script> -->
+  <link href="assets1/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Medilab
@@ -55,7 +55,7 @@ include('bd.php');
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="tel:+243975738343" class="twitter"><i class="bi bi-telephone-inbound"></i></a>
-        <a href="https://www.facebook.com/christelle.kabunga.56" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.facebook.com/chris.kbg.12" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="http://wa.me/+243975738343" class="instagram"><i class="bx bxl-whatsapp"></i></a>
         <a href="mailto:kabungachristelle66@gmail.com" class="google-plus"><i class="bi bi-envelope"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
@@ -67,9 +67,9 @@ include('bd.php');
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="./admin_area/admin_register.php">Christelle KABUNGA</a></h1>
+      <h1 class="logo me-auto"><a href="#">Christelle KABUNGA</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets1/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -151,10 +151,11 @@ include('bd.php');
         <div class="row">
           <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
           <?php
-          $req=$pdo->query("SELECT * from `login`");
+          $req=$pdo->prepare("SELECT * from `user`");
+          $req->execute();
           $photo = $req->fetch();
           ?>
-          <img src="admin_area/img_profile/<?php echo $photo["image"]; ?>"
+          <img src="assets/img/profiles/<?php echo $photo["photo"]; ?>"
             class="img-fluid" alt="">
           </div>
 
@@ -188,8 +189,8 @@ include('bd.php');
               <p class="description">Parmi tant des langages qui existent dans le domaine informatique,
                 je maîtrise plus de 4 langages de programmation et quelques framework.</p>
             </div>
-                  <a href="doc.pdf" download="cv de christelle" id="cv"
-                  class="btn btn-primary btn-sm " >Mon CV <img src="assets/img/icons8_download_24px.png"
+                  <a href="chris crct 2.pdf" download="cv de christelle" id="cv"
+                  class="btn btn-primary btn-sm " >Mon CV <img src="assets1/img/icons8_download_24px.png"
                   alt=""></a>
           </div>
         </div>
@@ -213,21 +214,22 @@ include('bd.php');
   
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <?php
-  $req=$pdo->query("SELECT * from realisations");
-  while($pr=$req->fetch()){ ?>
+  $requete=$pdo->prepare("SELECT * from realisations");
+  $requete->execute();
+  while($pr=$requete->fetch()){ ?>
         <div class="col ">
           <div class="card shadow-sm">
-           <img src="img/<?php echo $pr['photo'] ;?>" width="100%" height="225" class="img-fluid" alt="">
+           <img src="assets/img/realisations/<?php echo $pr['photo'] ;?>" width="100%" height="225" class="img-fluid" alt="">
   
             <div class="card-body">
-            <h4 class="card-title"><?php echo $pr['nomreal'] ;?>/-</h4><br>
+            <h4 class="card-title"><?php echo $pr['nomreal'] ;?></h4><br>
               <p class="card-text"><?php echo $pr['description'] ;?>.</p>
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <div class="btn-group">
                   <div class="d-flex justify-content-cente">
                   <button class="btn  outil">HTML5</button>
-                  <button  class=" btn  outil">CSS</button>
-                  <button  class=" btn outil">JS</button>
+                  <button  class=" btn  outil">PHP</button>
+                  <button  class=" btn outil">CSS</button>
                   <button  class=" btn  outil">BOOTSTRAP</button>
                   </div>
                   
@@ -235,7 +237,7 @@ include('bd.php');
                
               </div>
               <button type="button" class="btn btn-sm btn-primary "><a href="<?php echo $pr['lien'] ;?>"
-                style="text-decoration: none;color: black; "> Regarder <img src="assets/img/icons8_visible_30px.png"
+                style="text-decoration: none;color: black; "> Regarder <img src="assets1/img/icons8_visible_30px.png"
                 alt=""> </a> </button>
             </div>
           </div>
@@ -269,7 +271,7 @@ include('bd.php');
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>RDC, Butembo, Q .Bwinyole,N°22</p>
+                <p>RDC, Butembo, Q .Bwinyole,cellule Vusehi</p>
               </div>
 
               <div class="email">
@@ -336,12 +338,12 @@ include('bd.php');
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-          Designed for you with much love
+          Designed for you with much love  <a href="views/index.php" class="linkedin"><i class=""></i>/ Login</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="tel:+243975738343" class="twitter"><i class="bi bi-telephone-inbound"></i></a>
-        <a href="https://www.facebook.com/christelle.kabunga.56" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.facebook.com/chris.kbg.12" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="http://wa.me/+243975738343" class="instagram"><i class="bx bxl-whatsapp"></i></a>
         <a href="mailto:kabungachristelle66@gmail.com" class="google-plus"><i class="bi bi-envelope"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
@@ -353,14 +355,14 @@ include('bd.php');
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets1/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets1/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets1/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets1/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets1/js/main.js"></script>
 
 </body>
 
