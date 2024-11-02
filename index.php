@@ -58,7 +58,7 @@ include('connexion/bd.php');
         <a href="https://www.facebook.com/chris.kbg.12" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="http://wa.me/+243975738343" class="instagram"><i class="bx bxl-whatsapp"></i></a>
         <a href="mailto:kabungachristelle66@gmail.com" class="google-plus"><i class="bi bi-envelope"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/christelle-kabunga-b1a5a7262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </div>
@@ -118,7 +118,7 @@ include('connexion/bd.php');
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-receipt"></i>
                     <h4>Intégration Web</h4>
-                    <p>Des intégrations HTML/CSS respecteuses des standards du web</p>
+                    <p>Des intégrations HTML/CSS et JavaScript respecteuses des standards du web</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
@@ -133,7 +133,7 @@ include('connexion/bd.php');
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-atom"></i>
                     <h4>Gestion de projets web</h4>
-                    <p>création des sites web publicitaires très attrayants pour promouvoir votre entreprise</p>
+                    <p>création des sites web très attrayants et dynamiques pour promouvoir les activités de votre entreprise, gestion de base des données pour la sécurité de vos données.</p>
                   </div>
                 </div>
               </div>
@@ -162,18 +162,18 @@ include('connexion/bd.php');
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
             <h3>A propos de moi</h3>
             <p> je suis une jeune dévellopeuse oeuvrant dans le domaine 
-              du frontend depuis plus d'un an maintenant.
+              du web depuis plus de 3ans maintenant.
               Mon attirance pour la beauté associé à mon expérience restent 
               mes principaux atouts pour créer au quotidien des 
               sites web attrayants tout en considérant l'oexpérience utilisateur.
             </p>
 
             <div class="icon-box">
-              <div class="icon"><i class="t">12+</i></div>
-              <h4 class="title"><a href="">Mois d'expérience</a></h4>
+              <div class="icon"><i class="t">5+</i></div>
+              <h4 class="title"><a href="">Années d'expérience</a></h4>
               <p class="description">je travaille souvent au côté des grands,vous savez l'adage 
                 qui dit"si tu veux devenir grand,il faut frequenter les grands". j'ai acquis beaucoup 
-                d'expérience en travaillant avec les développeurs de TOGETHER AS ONE TEAM.</p>
+                d'expérience en travaillant avec les développeurs de TOGETHER AS ONE et ceux du groupe Three devs</p>
             </div>
 
             <div class="icon-box">
@@ -184,14 +184,13 @@ include('connexion/bd.php');
             </div>
 
             <div class="icon-box">
-              <div class="icon"><i class="">4+</i></div>
+              <div class="icon"><i class="">3+</i></div>
               <h4 class="title"><a href="">langages maîtrisés</a></h4>
               <p class="description">Parmi tant des langages qui existent dans le domaine informatique,
-                je maîtrise plus de 4 langages de programmation et quelques framework.</p>
+                je maîtrise plus de 3 langages de programmation et quelques framework.</p>
             </div>
-                  <a href="chris crct 2.pdf" download="cv de christelle" id="cv"
-                  class="btn btn-primary btn-sm " >Mon CV <img src="assets1/img/icons8_download_24px.png"
-                  alt=""></a>
+                  <a href="cv.php"  id="cv"
+                  class="btn btn-primary btn-sm text-center" >Consulter mon CV </a>
           </div>
         </div>
 
@@ -237,7 +236,7 @@ include('connexion/bd.php');
                
               </div>
               <button type="button" class="btn btn-sm btn-primary "><a href="<?php echo $pr['lien'] ;?>"
-                style="text-decoration: none;color: black; "> Regarder <img src="assets1/img/icons8_visible_30px.png"
+                style="text-decoration: none;color: white; "> Regarder <img src="assets1/img/icons8_visible_30px.png"
                 alt=""> </a> </button>
             </div>
           </div>
@@ -285,20 +284,13 @@ include('connexion/bd.php');
                 <h4>Call:</h4>
                 <p>+243 975 738 343</p>
               </div>
-
             </div>
-
           </div>
-
           <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="https://formspree.io/f/meqwbkwv" method="post" role="form" class="php-email-form">
+            <form action="https://formspree.io/f/xyzyeepr" method="post" role="form" >
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
               <div class="form-group mt-3">
@@ -308,23 +300,16 @@ include('connexion/bd.php');
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit"  class="btn btn-primary">Send Message</button></div>
             </form>
 
           </div>
 
         </div>
-
       </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
+    </section>
+  </main>
   <footer id="footer">
 
     <div class="container d-md-flex py-4">
@@ -346,7 +331,7 @@ include('connexion/bd.php');
         <a href="https://www.facebook.com/chris.kbg.12" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="http://wa.me/+243975738343" class="instagram"><i class="bx bxl-whatsapp"></i></a>
         <a href="mailto:kabungachristelle66@gmail.com" class="google-plus"><i class="bi bi-envelope"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/christelle-kabunga-b1a5a7262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
