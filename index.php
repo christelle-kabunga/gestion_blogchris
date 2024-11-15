@@ -215,7 +215,14 @@ include('connexion/bd.php');
       <?php
   $requete=$pdo->prepare("SELECT * from realisations");
   $requete->execute();
-  while($pr=$requete->fetch()){ ?>
+  while($pr=$requete->fetch()){ 
+    
+    // Prépare l'URL pour garantir qu'elle est complète
+      $lien = $pr['lien'];
+      if (!preg_match('/^http(s)?:\/\//', $lien)) {
+          $lien = "https://$lien"; // Ajoute "https://" si manquant
+      }
+    ?>
         <div class="col ">
           <div class="card shadow-sm">
            <img src="assets/img/realisations/<?php echo $pr['photo'] ;?>" width="100%" height="225" class="img-fluid" alt="">
@@ -233,11 +240,13 @@ include('connexion/bd.php');
                   </div>
                   
                 </div>
-               
               </div>
-              <button type="button" class="btn btn-sm btn-primary "><a href="<?php echo $pr['lien'] ;?>"
-                style="text-decoration: none;color: white; "> Regarder <img src="assets1/img/icons8_visible_30px.png"
-                alt=""> </a> </button>
+              <button type="button" class="btn btn-sm btn-primary ">
+                <a href="<?php echo $lien; ?>" style="text-decoration: none; color: white;">
+                    Regarder <img src="assets1/img/icons8_visible_30px.png" alt="Icone Visible">
+                </a>
+
+               </button>
             </div>
           </div>
         </div>

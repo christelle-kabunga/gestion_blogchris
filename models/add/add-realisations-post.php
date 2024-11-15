@@ -5,9 +5,10 @@ include ('../../connexion/bd.php');
 require_once ('../../fonctions/fonctions.php');
 // creation de l'evenement sur le bouton valider
 if(isset($_POST['valider'])){
-  $titre=htmlspecialchars($_POST['titre']) ;
-  $description=htmlspecialchars($_POST['description']);
-  $lien=htmlspecialchars($_POST['lien']);
+  $titre = htmlspecialchars($_POST['titre']) ;
+  $description = htmlspecialchars($_POST['description']);
+  $lien = htmlspecialchars($_POST['lien']);
+  
 
   // recuperer l'image
   $image = $_FILES['photo']['name'];
@@ -18,7 +19,7 @@ if(isset($_POST['valider'])){
   // verification si la variable newimage a un element
   if ($newimage != 0) {
     #verifier si l'realisations existe ou pas dans la bd
-    $getrealisations = $pdo->prepare("SELECT * FROM `realisations` WHERE description=?");
+    $getrealisations = $pdo->prepare("SELECT * FROM `realisations` WHERE `description` = ?");
     $getrealisations->execute([$description]);
     $tab = $getrealisations->fetch();
     // verification si la variable tab est superieur à zéro
@@ -29,7 +30,7 @@ if(isset($_POST['valider'])){
       $_SESSION['recuplien'] = $lien;
       header("location:../../views/realisations.php");
     } else {
-        $req = $pdo->prepare("INSERT INTO realisations (nomreal,description,photo,lien) VALUES (?,?,?,?)");
+        $req = $pdo->prepare("INSERT INTO realisations (nomreal,`description`,photo,lien) VALUES (?,?,?,?)");
         $resultat = $req->execute([$titre,$description,$newimage,$lien]);
         if ($resultat == true) {
           $_SESSION['msg'] = "Enregistrement réussie";

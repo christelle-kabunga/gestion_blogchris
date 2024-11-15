@@ -13,13 +13,13 @@ if (isset($_POST['valider']) && !empty($_GET['idreal'])) {
   // recuperer l'image
   $image = $_FILES['photo']['name'];
   $file = $_FILES['photo'];
-  $destination = "../../assets/img/profiles/" . basename($image);
+  $destination = "../../assets/img/realisations/" . basename($image);
   // fonction permettant de recuperer la photo
   $newimage = RecuperPhoto($image, $file, $destination);
   // verification si la variable newimage a un element
   if ($newimage != 0) {
     #verifier si l'realisations existe ou pas dans la bd
-    $getrealisations = $pdo->prepare("SELECT * FROM `realisations` WHERE description=?");
+    $getrealisations = $pdo->prepare("SELECT * FROM `realisations` WHERE `description`=?");
     $getrealisations->execute([$description]);
     $tab = $getrealisations->fetch();
     // verification si la variable tab est superieur à zéro
@@ -30,7 +30,7 @@ if (isset($_POST['valider']) && !empty($_GET['idreal'])) {
       $_SESSION['recuplien'] = $lien;
       header("location:../../views/realisations.php");
     }else{
-      $req = $pdo->prepare("UPDATE `realisations` SET  nomreal=?,description=?,photo=?,lien=? WHERE id='$id'");
+      $req = $pdo->prepare("UPDATE `realisations` SET  nomreal=?,`description`=?,photo=?,lien=? WHERE id='$id'");
       $resultat = $req->execute([$titre, $description, $image, $lien]);
       if ($resultat == true) {
         $msg = "Modification réussie";
