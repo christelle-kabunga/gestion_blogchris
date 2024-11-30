@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fonction pour récupérer la photo, la déplacer et renvoyer son nom à la base de données.
  * Si l'extension n'est pas recommandée, retourne 0.
@@ -38,6 +39,19 @@ function upload_file($name, $file, $destination, $extensions) {
     if ($fileerror !== UPLOAD_ERR_OK) {
         return "Erreur lors de l'importation du fichier. Code d'erreur: " . $fileerror;
     }
+}
+
+/**
+ * Cette fonction récupère les derniers caractères d'une chaîne.
+ * @param string $string : Chaîne de texte
+ * @param int $num : Nombre de caractères à récupérer
+ * @return string
+ */
+function getLastCharacters($string, $num)
+{
+    return substr($string, -$num);
+}
+
 
     // Vérification de l'extension
     if (!in_array($filecheck, $extensions)) {
@@ -57,3 +71,4 @@ function upload_file($name, $file, $destination, $extensions) {
     return $name;
 }
 ?>
+
