@@ -1,33 +1,43 @@
 <?php
-    /**
- * Cette fonction permet de récupérer la photo, la déplacer, et renvoyer son nom.
- * Si l'extension de la photo sélectionnée n'est pas autorisée, elle retourne 0.
- * Sinon, elle retourne le nom de la photo ou fichier.
+
+/**
+ * Fonction pour récupérer la photo, la déplacer et renvoyer son nom à la base de données.
+ * Si l'extension n'est pas recommandée, retourne 0.
  */
 function RecuperPhoto($image, $file, $destination)
 {
-    // Récupération des informations du fichier temporaire
     $filetmp = $file['tmp_name'];
-    
-    // Extraction de l'extension du fichier
-    $fileext = pathinfo($image, PATHINFO_EXTENSION);
-    $fileext = strtolower($fileext); // Mettre l'extension en minuscules
-    
-    // Extensions autorisées
-    $allowedExtensions = ['png', 'jpg', 'jpeg'];
-    
-    // Vérifications
+    $fileext = explode('.', $image);
+    $filecheck = strtolower(end($fileext));
+    $allowedExtensions = array('png', 'jpg', 'jpeg');
+
     if (empty($image)) {
-        return -1; // Aucun fichier sélectionné
-    } elseif (!in_array($fileext, $allowedExtensions)) {
-        return '0'; // Extension non autorisée
+        return -1;
+    } elseif (!in_array($filecheck, $allowedExtensions)) {
+        return '0';
     } else {
-        // Déplacement du fichier
-        if (move_uploaded_file($filetmp, $destination)) {
-            return $image; // Succès : on retourne le nom du fichier
-        } else {
-            return -2; // Erreur lors du déplacement du fichier
-        }
+        move_uploaded_file($filetmp, $destination);
+        return $image;
+    }
+}
+
+/**
+ * Fonction pour récupérer les derniers caractères dans une chaîne.
+ */
+function getLastCharacters($string, $num) {
+    return substr($string, -$num);
+}
+
+function upload_file($name, $file, $destination, $extensions) {
+    $size = 5 * 1024 * 1024; // Limite de taille de 5 Mo
+    $fileerror = $file['error'];
+    $filetmp = $file['tmp_name'];
+    $fileext = explode('.', $name);
+    $filecheck = strtolower(end($fileext));
+
+    // Vérification de l'erreur d'upload
+    if ($fileerror !== UPLOAD_ERR_OK) {
+        return "Erreur lors de l'importation du fichier. Code d'erreur: " . $fileerror;
     }
 }
 
@@ -41,4 +51,24 @@ function getLastCharacters($string, $num)
 {
     return substr($string, -$num);
 }
+
+
+    // Vérification de l'extension
+    if (!in_array($filecheck, $extensions)) {
+        return "Le format de fichier à importer est incorrect. Le système prend en charge les formats suivants <b>" . implode(', ', $extensions) . "</b> . Veuillez réessayer.";
+    }
+
+    // Vérification de la taille du fichier
+    if ($file['size'] > $size) {
+        return "La taille du fichier est incorrecte. Le système prend en charge un maximum de 5 Mo. Veuillez réessayer.";
+    }
+
+    // Déplacement du fichier vers la destination
+    if (!move_uploaded_file($filetmp, $destination . '/' . $name)) {
+        return "Erreur lors du déplacement du fichier.";
+    }
+
+    return $name;
+}
+?>
 

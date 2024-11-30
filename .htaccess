@@ -1,0 +1,12 @@
+# Désactiver ModSecurity si permis par le serveur
+<IfModule mod_security.c>
+    SecRuleEngine Off
+</IfModule>
+
+# Si des règles spécifiques causent des problèmes, vous pouvez les supprimer ici
+<IfModule mod_security.c>
+    SecRuleRemoveById 981176
+    SecRuleRemoveById 980130
+    SecRuleRemoveById 123456 # Ajoutez ici d'autres ID problématiques
+</IfModule>
+
