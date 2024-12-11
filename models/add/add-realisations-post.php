@@ -25,18 +25,18 @@ if (isset($_POST['valider'])) {
     if (! empty($name)) {
         // Vérifier si la réalisation existe ou pas dans la BD
     // Nettoyage et validation des données
-    $titre = filter_var($titre, FILTER_SANITIZE_STRING);
-    $description = filter_var($description, FILTER_SANITIZE_STRING);
-    $lien = filter_var($lien, FILTER_VALIDATE_URL);
+    // $titre = filter_var($titre, FILTER_SANITIZE_STRING);
+    // $description = filter_var($description, FILTER_SANITIZE_STRING);
+    // $lien = filter_var($lien, FILTER_VALIDATE_URL);
 
-    if (!$lien) {
-        $_SESSION['msg'] = "Lien invalide.";
-        $_SESSION['recuptitre'] = $titre;
-        $_SESSION['recupdescription'] = $description;
-        $_SESSION['recuplien'] = $lien;
-        header("location:../../views/realisations.php");
-        exit;
-    }
+    // if (!$lien) {
+    //     $_SESSION['msg'] = "Lien invalide.";
+    //     $_SESSION['recuptitre'] = $titre;
+    //     $_SESSION['recupdescription'] = $description;
+    //     $_SESSION['recuplien'] = $lien;
+    //     header("location:../../views/realisations.php");
+    //     exit;
+    // }
 
     // Gestion de l'image
     $image = $_FILES['photo']['name'];
@@ -98,12 +98,11 @@ if (isset($_POST['valider'])) {
             }
             
         }
-    } else {
-        $_SESSION['msg'] = "Le format de l'image que vous avez choisi n'est pas autorisé";
-        header("location:../../views/realisations.php");
-    }
+    } 
+
 } else {
     header("location:../../views/realisations.php");
 
+}
 }
 ?>

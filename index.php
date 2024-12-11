@@ -9,8 +9,7 @@ include('connexion/bd.php');
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>christelleKabunga</title>
+  <title>Christelle Kabunga</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -19,7 +18,7 @@ include('connexion/bd.php');
   <link href="assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Poppins" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets1/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -28,20 +27,22 @@ include('connexion/bd.php');
   <link href="assets1/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets1/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets1/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets1/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets1/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <!-- <script src="assets1/css/style.php" cache-control="no-cache"></script> -->
   <link href="assets1/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    .img-uniforme {
+      width: 100%;
+      height: 225px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .outil-sm {
+    font-size: 12px; /* Diminue la taille du texte */
+    padding: 5px 10px; /* Ajuste les marges intérieures du bouton */
+    border-radius: 5px; /* (Optionnel) Ajoute des coins légèrement arrondis */
+    }
+  </style>
 </head>
 
 <body>
@@ -155,8 +156,10 @@ include('connexion/bd.php');
           $req->execute();
           $photo = $req->fetch();
           ?>
-          <img src="assets/img/profiles/<?php echo $photo["photo"]; ?>"
-            class="img-fluid" alt="">
+          <img src="assets/img/profiles/<?php echo $photo['photo']; ?>" 
+            class="img-fluid" 
+            alt="">
+
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
@@ -225,18 +228,18 @@ include('connexion/bd.php');
     ?>
         <div class="col ">
           <div class="card shadow-sm">
-           <img src="assets/img/realisations/<?php echo $pr['photo'] ;?>" width="100%" height="225" class="img-fluid" alt="">
+          <img src="assets/img/realisations/<?php echo $pr['photo']; ?>" class="img-fluid img-uniforme" alt="">
   
             <div class="card-body">
             <h4 class="card-title"><?php echo $pr['nomreal'] ;?></h4><br>
               <p class="card-text"><?php echo $pr['description'] ;?>.</p>
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <div class="btn-group">
-                  <div class="d-flex justify-content-cente">
-                  <button class="btn  outil">HTML5</button>
-                  <button  class=" btn  outil">PHP</button>
-                  <button  class=" btn outil">CSS</button>
-                  <button  class=" btn  outil">BOOTSTRAP</button>
+                  <div class="d-flex justify-content-center">
+                  <button class="btn  outil outil-sm">HTML5</button>
+                  <button  class=" btn  outil outil-sm">PHP</button>
+                  <button  class=" btn outil outil-sm">CSS</button>
+                  <button  class=" btn  outil outil-sm">BOOTSTRAP</button>
                   </div>
                   
                 </div>

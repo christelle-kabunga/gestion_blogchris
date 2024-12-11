@@ -33,34 +33,26 @@ function upload_file($name, $file, $destination, $extensions) {
     $fileerror = $file['error'];
     $filetmp = $file['tmp_name'];
     $fileext = explode('.', $name);
-    $filecheck = strtolower(end($fileext));
+    $filecheck = strtolower(end($fileext)); // Vérifie l'extension du fichier
 
     // Vérification de l'erreur d'upload
     if ($fileerror !== UPLOAD_ERR_OK) {
         return "Erreur lors de l'importation du fichier. Code d'erreur: " . $fileerror;
     }
-}
 
-/**
- * Cette fonction récupère les derniers caractères d'une chaîne.
- * @param string $string : Chaîne de texte
- * @param int $num : Nombre de caractères à récupérer
- * @return string
- */
-function getLastCharacters($string, $num)
-{
-    return substr($string, -$num);
-}
-
+    // Vérification que $extensions est défini et est bien un tableau
+    if (!isset($extensions) || !is_array($extensions)) {
+        return "Erreur interne : les extensions autorisées ne sont pas correctement définies.";
+    }
 
     // Vérification de l'extension
     if (!in_array($filecheck, $extensions)) {
-        return "Le format de fichier à importer est incorrect. Le système prend en charge les formats suivants <b>" . implode(', ', $extensions) . "</b> . Veuillez réessayer.";
+        return "Le format de fichier est incorrect. Les formats acceptés sont : <b>" . implode(', ', $extensions) . "</b>. Veuillez réessayer.";
     }
 
     // Vérification de la taille du fichier
     if ($file['size'] > $size) {
-        return "La taille du fichier est incorrecte. Le système prend en charge un maximum de 5 Mo. Veuillez réessayer.";
+        return "La taille du fichier est trop grande. Le fichier doit être inférieur ou égal à 5 Mo.";
     }
 
     // Déplacement du fichier vers la destination
@@ -68,7 +60,8 @@ function getLastCharacters($string, $num)
         return "Erreur lors du déplacement du fichier.";
     }
 
-    return $name;
+    return $name; // Succès, retourne le nom du fichier
 }
+
 ?>
 
